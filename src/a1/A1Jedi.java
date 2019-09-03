@@ -7,7 +7,7 @@ public class A1Jedi {
 	public static void main(String[] args) {
 		//Create a scanner to read the user input
 		Scanner userInput = new Scanner(System.in);
-		
+
 		//Start by getting the number of items that will be in the inventory arrays
 		int NUM_OF_INVENTORY_ITEMS = userInput.nextInt();
 		//Create two arrays to model the inventory of goods in the store
@@ -20,11 +20,11 @@ public class A1Jedi {
 		//QUANTITY_PURCHASED[i] will the contian the number of units that have been purchased of INVENTORY_ITEMS[i]
 		int[] UNIQUE_CUSTOMERS = new int[NUM_OF_INVENTORY_ITEMS];
 		int[] QUANTITY_PURCHASED = new int[NUM_OF_INVENTORY_ITEMS]; 
-		
+
 		//As a side note all four arrays will contain data about the same object given a consistent position
 		//INVENTORY_ITEMS, INVENTORY_PRICES, UNIQUE_CUSTOMERS, QUANTITY_PURCHASED are all related
-		
-		
+
+
 		//Now, add all NUM_OF_INVENTORY_ITEMS items to the INVENTORY_ITEMS array and add their prices to the INVENTORY_PRICES array
 		for(int i = 0; i < NUM_OF_INVENTORY_ITEMS; i++) {
 			//Add the next line (item name) to the INVENTORY_ITEMS array
@@ -32,7 +32,7 @@ public class A1Jedi {
 			//Add the next douvle (item cost) to the INVENTORY_PRICES array
 			INVENTORY_PRICES[i] = userInput.nextDouble();
 		}
-		
+
 		//Now, create a variable to get the number of customers that will be accounted for
 		int NUMBER_OF_CUSTOMERS = userInput.nextInt(); 
 
@@ -43,7 +43,7 @@ public class A1Jedi {
 			userInput.next();
 			//Now, get the number of item entries that the current customer has purchased
 			int NUMBER_OF_ITEMS_PURCHASED = userInput.nextInt();
-			
+
 			//Create an array of booleans to see if the customer has already purchased the current item before since we don't want to count two transactions by the same customer as 2 distinct customers
 			boolean[] hasPurchasedThisItemAlready = new boolean[NUM_OF_INVENTORY_ITEMS];
 			//Before we look at the current customer, reset all the values in hasPurchasedThisItemAlready
@@ -68,10 +68,14 @@ public class A1Jedi {
 				}	
 			}
 		}
+		
+		//Close scanner
+		userInput.close();
+		
 		//Print the spending summary statistics now that all the data has been read and processed from the user
 		printSpendingStats(INVENTORY_ITEMS, UNIQUE_CUSTOMERS, QUANTITY_PURCHASED);
 	}
-	
+
 	/* clearBooleanArray
 	 * Takes an array of booleans and resets them all to be false
 	 * 
@@ -133,6 +137,6 @@ public class A1Jedi {
 			}
 		}
 	}
-	
+
 
 }

@@ -12,7 +12,7 @@ public class A1Adept {
 		//Create two arrays to model the inventory of goods in the store
 		String[] INVENTORY_ITEMS = new String[NUM_OF_INVENTORY_ITEMS];
 		double[] INVENTORY_PRICES = new double[NUM_OF_INVENTORY_ITEMS];
-		
+
 		//Now, add all NUM_OF_INVENTORY_ITEMS to the two inventory arrays
 		for(int i = 0; i < NUM_OF_INVENTORY_ITEMS; i++) {
 			//Add the item name
@@ -20,15 +20,15 @@ public class A1Adept {
 			//Add the item cost
 			INVENTORY_PRICES[i] = userInput.nextDouble();
 		}
-		
+
 		//Now, create a variable to get the number of customers that will be accounted for
 		int NUMBER_OF_CUSTOMERS = userInput.nextInt();
-		
+
 		//Now, create an array to model all of the customer names
 		String[] CUSTOMER_NAMES = new String[NUMBER_OF_CUSTOMERS];
 		//Also, create an array to model all of the customer totals
 		double[] CUSTOMER_TOTALS = new double[NUMBER_OF_CUSTOMERS];
-		
+
 		//For each customer, add the appropriate data to CUSTOMER_NAMES and CUSTOMER_TOTALS
 		for (int i = 0; i < NUMBER_OF_CUSTOMERS; i++) {
 			//Add the customer name to the CUSTOMER_NAMES array
@@ -40,12 +40,18 @@ public class A1Adept {
 				CUSTOMER_TOTALS[i] += userInput.nextInt()*FindItemPrice(userInput.next(),INVENTORY_ITEMS,INVENTORY_PRICES);
 			}
 		}
+		
+		
+		//Close scanner
+		userInput.close();
+		
+		
 		//Call the three functions implemented below to display the targeted A1Adept output
 		FindBiggestSpender(CUSTOMER_NAMES, CUSTOMER_TOTALS);
 		FindLowestSpender(CUSTOMER_NAMES, CUSTOMER_TOTALS);
 		ComputeAverageSpending(CUSTOMER_TOTALS);
 	}
-	
+
 	/* FindBiggestSpender
 	 * Prints the name and transaction total of the customer who spent the most amount of money
 	 * 
@@ -68,7 +74,7 @@ public class A1Adept {
 		//Print a summary line to the screen
 		System.out.println("Biggest: " + names[highestIndex] + " (" + String.format("%.2f", totals[highestIndex]) + ")");
 	}
-	
+
 	/* FindLowestSpender
 	 * Prints the name and transaction total of the customer who spent the least amount of money
 	 * 
@@ -91,7 +97,7 @@ public class A1Adept {
 		//Print a summary line to the screen
 		System.out.println("Smallest: " + names[lowestIndex] + " (" + String.format("%.2f", totals[lowestIndex]) + ")");
 	}
-	
+
 	/* ComputeAverageSpending
 	 * Finds the average spent by all customers
 	 * 
@@ -110,7 +116,7 @@ public class A1Adept {
 		//Print the final message while dividing the running total by the number of customers
 		System.out.println("Average: " + String.format("%.2f",total/spendingValues.length));
 	}
-	
+
 	/* FindItemPrice
 	 * Finds the price of an item given its associated name
 	 * 
